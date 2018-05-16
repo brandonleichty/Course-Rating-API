@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const seeder = require('mongoose-seeder');
+const seedData = require('./data/data.json');
 
 // Import environmental variables from our variables.env file
 require('dotenv').config({ path: 'variables.env' });
@@ -19,11 +21,20 @@ mongoose.connect(mongoDB).then(
 	}
 );
 
+// See database using mongoose-seeder. "dropDatabase" is set to true by default.
+const db = mongoose.connection;
+
+db.once('open', () => {
+	seeder.seed(seedData).then(() => {
+    console.log('Successfully seeded sample data! 🌻');
+  }).catch((err) => {
+		console.log(err);
+	});
+});
+
 // Start our app!
 const app = require('./src/app');
 app.set('port', process.env.PORT || 5000);
 const server = app.listen(app.get('port'), () => {
-  console.log(`Express running → PORT ${server.address().port}`);
+	console.log(`Express running → PORT ${server.address().port}`);
 });
-
-
