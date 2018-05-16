@@ -29,3 +29,6 @@ const userSchema = new Schema({
       require: 'Please enter a password.'
   },
 });
+
+
+module.exports = mongoose.model('User', userSchema);
