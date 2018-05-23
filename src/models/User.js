@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
+const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 // Create your Mongoose schema and models. Your database schema should match the following requirements:
