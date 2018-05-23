@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-
+const courseController = require("../controllers/courseController");
 
 // Create the user routes
 //  Set up the following routes (listed in the format HTTP VERB Route HTTP Status Code):
 //  GET /api/users 200 - Returns the currently authenticated user
 //  POST /api/users 201 - Creates a user, sets the Location header to "/", and returns no content
 
-router.get('/api/users', currentUser);
+    // router.get('/api/users', currentUser);
 
-router.post('/api/users', newUser);
+    // router.post('/api/users', newUser);
 
 
 // Create the course routes
@@ -21,15 +21,17 @@ router.post('/api/users', newUser);
 //  PUT /api/courses/:courseId 204 - Updates a course and returns no content
 //  POST /api/courses/:courseId/reviews 201 - Creates a review for the specified course ID, sets the Location header to the related course, and returns no content
 
-router.get('/api/coures', getAllCourses);
+router.get('/api/courses', courseController.getAllCoures);
 
-router.get('/api/course/:courseId', getCourse);
+
+
+router.get('/api/courses/:courseId', courseController.getCourse);
 
 router.post('/api/courses', newCourse);
 
-router.put('/api/courses/:courseId', updateCourse);
+    // router.put('/api/courses/:courseId', updateCourse);
 
-router.post('/api/courses/:courseId/reviews', newCourseReview);
+    // router.post('/api/courses/:courseId/reviews', newCourseReview);
 
 
 
@@ -64,3 +66,7 @@ router.post('/api/courses/:courseId/reviews', newCourseReview);
 //    PUT /api/courses/:courseId
 //    GET /api/users
 //    POST /api/courses/:courseId/reviews
+
+
+
+module.exports = router;
