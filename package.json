@@ -12,8 +12,11 @@
     "nodemon": "^1.9.1"
   },
   "dependencies": {
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.3",
     "dotenv": "^5.0.1",
     "express": "^4.13.4",
+    "mais-mongoose-seeder": "^1.0.5",
     "mongoose": "^5.1.1",
     "mongoose-seeder": "^1.2.1",
     "morgan": "^1.7.0",
