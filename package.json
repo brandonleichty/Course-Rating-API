@@ -12,6 +12,7 @@
     "nodemon": "^1.9.1"
   },
   "dependencies": {
+    "basic-auth": "^2.0.0",
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
     "dotenv": "^5.0.1",
