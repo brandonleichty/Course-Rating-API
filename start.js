@@ -24,8 +24,8 @@ mongoose
 		console.log('👍👍 Successfully connected to Mongo database! 👍👍');
 		seeder
 			.seed(data, {
-				dropDatabase: true,
-				dropCollections: false
+				dropDatabase: true
+				// dropCollections: true
 			})
 			.then(() => {
 				// The database objects are stored in dbData
