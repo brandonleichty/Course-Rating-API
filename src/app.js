@@ -27,14 +27,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', routes);
 
 
-// Express's global error handler
-// app.use(function(err, req, res, next) {
-//   res.status(err.status || 500);
-//   res.send('error', {
-//     message: err.message,
-//     error: {}
-//   });
-// });
 
 
 
@@ -54,9 +46,5 @@ app.use(function (err, req, res, next) {
 });
 
 
-// start listening on our port
-// var server = app.listen(app.get('port'), function() {
-//   console.log('Express server is listening on port ' + server.address().port);
-// });
 
 module.exports = app;
