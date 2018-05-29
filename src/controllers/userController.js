@@ -17,6 +17,7 @@ exports.getCurrentUser = (req, res, next) => {
 exports.newUser = (req, res, next) => {
 	User.create(req.body),
 		(err, user) => {
+			console.log('Heyyyy this works!!');
 			if (err) return next(err);
 		};
 	res
