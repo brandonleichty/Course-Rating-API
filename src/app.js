@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const router = express.Router();
 const routes = require('./routes/index');
 
+
 const app = express();
 
 // // set our port
@@ -25,12 +26,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
 
-// catch 404 and forward to global error handler
-app.use(function(req, res, next) {
-  var err = new Error('File Not Found');
-  err.status = 404;
-  next(err);
-});
 
 // Express's global error handler
 // app.use(function(err, req, res, next) {
@@ -45,7 +40,9 @@ app.use(function(req, res, next) {
 
 // catch 404 errors and forward to error handler
 app.use(function (req, res, next) {
-  var err = new Error('Document not found');
+  console.log('ERROR HANDLER!');
+
+  var err = new Error('File found!');
   err.status = 404;
   return next(err);
 });
@@ -55,6 +52,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.json({ error: err.message || 'Something went wrong' });
 });
+
 
 // start listening on our port
 // var server = app.listen(app.get('port'), function() {
