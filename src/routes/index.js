@@ -1,15 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const courseController = require("../controllers/courseController");
+const authController = require("../controllers/authController");
+const userController = require("../controllers/userController");
+
 
 // Create the user routes
 //  Set up the following routes (listed in the format HTTP VERB Route HTTP Status Code):
 //  GET /api/users 200 - Returns the currently authenticated user
 //  POST /api/users 201 - Creates a user, sets the Location header to "/", and returns no content
 
-    // router.get('/api/users', currentUser);
+    router.get('/api/users',
+        authController.getCredentials,
+        userController.getCurrentUser);
 
-    // router.post('/api/users', newUser);
+    router.post('/api/users', userController.newUser);
 
 
 // Create the course routes
@@ -23,11 +28,9 @@ const courseController = require("../controllers/courseController");
 
 router.get('/api/courses', courseController.getAllCoures);
 
-
-
 router.get('/api/courses/:courseId', courseController.getCourse);
 
-router.post('/api/courses', newCourse);
+router.post('/api/courses', courseController.newCourse);
 
     // router.put('/api/courses/:courseId', updateCourse);
 
