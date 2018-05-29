@@ -3,6 +3,8 @@ const validator = require('validator');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
+
+
 // Create your Mongoose schema and models. Your database schema should match the following requirements:
 
 // User
@@ -18,17 +20,17 @@ const userSchema = new Schema({
     required: 'Please supply a full name.',
     trim: true
   },
-  email: {
+  emailAddress: {
       type: String,
       unique: true,
       lowercase: true,
       trim: true,
       validate: [validator.isEmail, 'Invalid email address.'],
-      require: 'Please supply an email address'
+      required: 'Please supply an email address'
   },
   password: {
       type: String,
-      require: 'Please enter a password.'
+      required: 'Please enter a password.'
   },
 });
 
