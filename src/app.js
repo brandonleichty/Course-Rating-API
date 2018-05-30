@@ -41,6 +41,9 @@ app.use(function (req, res, next) {
 
 // global error handler
 app.use(function (err, req, res, next) {
+  if(err.name = 'ValidationError'){
+    err.status = 400;
+  }
   res.status(err.status || 500);
   res.json({ error: err.message || 'Something went wrong' });
 });
