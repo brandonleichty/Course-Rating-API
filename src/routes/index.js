@@ -26,13 +26,13 @@ const userController = require("../controllers/userController");
 //  PUT /api/courses/:courseId 204 - Updates a course and returns no content
 //  POST /api/courses/:courseId/reviews 201 - Creates a review for the specified course ID, sets the Location header to the related course, and returns no content
 
-router.get('/api/courses', courseController.getAllCoures);
+    router.get('/api/courses', courseController.getAllCoures);
 
-router.get('/api/courses/:courseId', courseController.getCourse);
+    router.get('/api/courses/:courseId', courseController.getCourse);
 
-router.post('/api/courses', courseController.newCourse);
+    router.post('/api/courses', courseController.newCourse);
 
-    // router.put('/api/courses/:courseId', updateCourse);
+    router.put('/api/courses/:courseId', courseController.updateCourse);
 
     // router.post('/api/courses/:courseId/reviews', newCourseReview);
 
