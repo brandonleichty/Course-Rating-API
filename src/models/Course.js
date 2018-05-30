@@ -22,11 +22,11 @@ const courseSchema = new Schema({
 	},
 	title: {
 		type: String,
-		required: true
+		required: 'Please provide a course title.'
 	},
 	description: {
 		type: String,
-		required: true
+		required: 'Please supply a course description.'
 	},
 	estimatedTime: {
 		type: String
@@ -39,11 +39,11 @@ const courseSchema = new Schema({
 			stepNumber: Number,
 			title: {
 				type: String,
-				required: true
+				required: 'A step title is required.'
 			},
 			description: {
 				type: String,
-				required: true
+				required: 'A step description is required.'
 			}
 		}
 	],
