@@ -15,7 +15,19 @@ exports.getCredentials = (req, res, next) => {
 		return next(err);
 	} else {
 		console.log('Has credentials!');
-    req.credentials = credentials;
+		req.credentials = credentials;
 		next();
 	}
+};
+
+exports.authenticateCredentials = (req, res, next) => {
+	User.authenticate(req.credentials.name, req.credentials.pass, function(err, user) {
+		if (err || !user) {
+			const err = new Error('Wrong email or password');
+			err.status = 401;
+			return next(err);
+		} else {
+			return next();
+		}
+	});
 };
