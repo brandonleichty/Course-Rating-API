@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 const uniqueValidator = require('mongoose-unique-validator');
+const validator = require('validator');
+const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
@@ -36,6 +37,19 @@ const userSchema = new Schema({
 });
 
 userSchema.plugin(uniqueValidator);
+
+userSchema.pre('save', function(next) {
+  const user = this;
+  bcrypt.hash(user.password, 10, (err, hash) => {
+    if (err) {
+      return next(err);
+    } else {
+      // overwrite plaintext password with hashed password
+      user.password = hash;
+      next();
+    }
+  })
+});
 
 
 module.exports = mongoose.model('User', userSchema);
