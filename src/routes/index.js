@@ -34,7 +34,7 @@ const userController = require("../controllers/userController");
 
     router.put('/api/courses/:courseId', courseController.updateCourse);
 
-    // router.post('/api/courses/:courseId/reviews', newCourseReview);
+    router.post('/api/courses/:courseId/reviews', courseController.newCourseReview);
 
 
 
