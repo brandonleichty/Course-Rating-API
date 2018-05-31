@@ -12,6 +12,7 @@ const userController = require("../controllers/userController");
 
     router.get('/api/users',
         authController.getCredentials,
+        authController.authenticateCredentials,
         userController.getCurrentUser);
 
     router.post('/api/users', userController.newUser);
@@ -30,11 +31,23 @@ const userController = require("../controllers/userController");
 
     router.get('/api/courses/:courseId', courseController.getCourse);
 
-    router.post('/api/courses', courseController.newCourse);
+    router.post('/api/courses',
+        authController.getCredentials,
+        authController.authenticateCredentials,
+        courseController.newCourse
+    );
 
-    router.put('/api/courses/:courseId', courseController.updateCourse);
+    router.put('/api/courses/:courseId',
+        authController.getCredentials,
+        authController.authenticateCredentials,
+        courseController.updateCourse
+    );
 
-    router.post('/api/courses/:courseId/reviews', courseController.newCourseReview);
+    router.post('/api/courses/:courseId/reviews',
+        authController.getCredentials,
+        authController.authenticateCredentials,
+        courseController.newCourseReview
+    );
 
 
 
