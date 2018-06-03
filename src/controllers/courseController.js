@@ -69,7 +69,8 @@ exports.updateCourse = (req, res, next) => {
 	});
 };
 
-//  POST /api/courses/:courseId/reviews 201 - Creates a review for the specified course ID, sets the Location header to the related course, and returns no content
+// POST /api/courses/:courseId/reviews 201 - Creates a review for the specified course ID,
+// sets the Location header to the related course, and returns no content
 exports.newCourseReview = (req, res, next) => {
 
 	// create a new review and save it to the db.

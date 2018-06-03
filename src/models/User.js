@@ -60,6 +60,8 @@ UserSchema.statics.authenticate = function(emailAddress, password, callback) {
 	});
 };
 
+
+// Hash and salt password before saving
 UserSchema.pre('save', function(next) {
 	const user = this;
 	bcrypt.hash(user.password, 10, (err, hash) => {

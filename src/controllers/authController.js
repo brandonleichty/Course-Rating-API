@@ -2,6 +2,8 @@ const auth = require('basic-auth');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
+
+// gets credentials using basic-auth. If there are no credentials, an error is passed to the global error handler
 exports.getCredentials = (req, res, next) => {
 	const credentials = auth(req);
 
@@ -20,6 +22,8 @@ exports.getCredentials = (req, res, next) => {
 	}
 };
 
+// If the user does indeed have credentials, compare them against the database.
+// If their credentials don't match, send an error to the global error handler. Otherwise pass on to next middleware
 exports.authenticateCredentials = (req, res, next) => {
 	User.authenticate(req.credentials.name, req.credentials.pass, function(err, user) {
 		if (err || !user) {
