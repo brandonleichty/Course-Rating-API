@@ -13,7 +13,7 @@ mongoose.Promise = global.Promise;
 //  review (String)
 
 const reviewSchema = new Schema({
-	user: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+	user: { type: Schema.Types.ObjectId, ref: 'User' },
 	postedOn: {
 		type: Date,
 		default: Date.now

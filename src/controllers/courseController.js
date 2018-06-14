@@ -16,18 +16,18 @@ exports.getAllCoures = (req, res, next) => {
 //  GET /api/course/:courseId 200 - Returns all Course properties and related documents for the provided course ID
 exports.getCourse = (req, res, next) => {
 	Course.findById({ _id: req.params.courseId })
-		.populate({
-			path: 'user',
-			model: 'User'
-		})
-		.populate({
-			path: 'reviews',
-			model: 'Review',
-			populate: {
+	.populate({
+		path: 'user',
+		model: 'User'
+	})
+	.populate({
+		path: 'reviews',
+		model: 'Review',
+		populate: {
 				path: 'user',
 				model: 'User'
-			}
-		})
+		}
+	})
 		.exec((err, course) => {
 			if (err) return next(err);
 			res.status(200);
